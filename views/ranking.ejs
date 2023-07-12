@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Smash</title>  
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/styleRanking.css">
+</head>
+
+<body>
+    <%- include("partials/header.ejs"); %>
+
+
+    <main>
+        <table>
+            <thead>
+                <th>Champion</th>
+                <th>Smashes</th>
+                <th>Passes</th>
+                <th>Ranking</th>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </main>
+    <%- include("partials/footer.ejs"); %>
+    
+    <script src="/js/menu-responsive.js"></script>
+    <script src="/js/ranking.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+*{
+    text-align: center;
+}
+
+
+main{
+    margin-top:10vh;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    width: 100%;
+    max-width: 800px;
+
+}
+
+table thead{
+    background-color: red;
+    color: white;
+}
+
+table tr:nth-child(2n){
+    background-color: #FF7377
+    ;
+}
+
+
+@media screen and (max-width:800px) {
+    figure img{
+        height:50vh;
+        width: auto;
+    }
+
+    main{
+        min-height: 70vh;
+    }
+
+    #burger{
+        display: block;
+    }
+
+    nav{
+        display: none;
+    }
+
+    .showNav{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top:0px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+    }
+
+}
