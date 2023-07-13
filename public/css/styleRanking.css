@@ -27,8 +27,23 @@ table tr:nth-child(2n){
     ;
 }
 
+#th-con-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-orden{
+    width: 1rem;
+    height: auto;
+    margin-left: 1rem
+}
+
+
+
 
 @media screen and (max-width:800px) {
+
     figure img{
         height:50vh;
         width: auto;

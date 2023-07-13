@@ -1,9 +1,11 @@
-
+const tbody = document.getElementById("tbody");
+let desc = false;
 window.addEventListener("load",  ()=>{
 
-    const tbody = document.getElementById("tbody");
 
-    traerRegistrosDB()
+    desc = true;
+
+    traerRegistrosDB("/registros")
     .then((res)=>{
         tbody.append(res);
     })
@@ -11,12 +13,12 @@ window.addEventListener("load",  ()=>{
 
 
 
-function  traerRegistrosDB(){
-
+function  traerRegistrosDB(fuente){
+    
     let frag = document.createDocumentFragment();
 
     return new Promise((resolve,reject) =>{
-        fetch("/registros")
+        fetch(fuente)
         .then(res=>res.json())
         .then(res =>{
             for(let i = 0; i < res.length; i++){
@@ -66,3 +68,24 @@ function crearRegistro(reg){
 
     return registro;
 }
+
+
+const btnOrden = document.getElementById("btn-orden");
+btnOrden.addEventListener("click",()=>{
+    tbody.innerHTML = "";
+    if(desc == true){
+        traerRegistrosDB("/registros_ASC")
+        .then((res)=>{
+            tbody.append(res);
+        })
+        desc = false;
+    }
+    else{
+        traerRegistrosDB("/registros")
+        .then((res)=>{
+            tbody.append(res);
+        })
+        desc = true;
+    }
+
+})

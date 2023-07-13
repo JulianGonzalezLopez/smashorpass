@@ -36,6 +36,18 @@ app.get("/registros",(req,res)=>{
     });
 })
 
+app.get("/registros_ASC",(req,res)=>{
+    db.all("SELECT * FROM resultados ORDER BY smash ASC", (err, rows) => {
+        if (err) {
+          console.error(err.message);
+          return;
+        }
+        console.log(rows);
+        res.ok = 200;
+        res.send(rows);
+        res.end();
+    });
+});
 
 
 app.post("/sop",(req,res)=>{
