@@ -1,5 +1,6 @@
 const tbody = document.getElementById("tbody");
-let desc = false;
+let desc = new Boolean();
+
 window.addEventListener("load",  ()=>{
 
 
@@ -22,11 +23,7 @@ function  traerRegistrosDB(fuente){
         .then(res=>res.json())
         .then(res =>{
             for(let i = 0; i < res.length; i++){
-                let ranking = document.createElement("td");
-                text = document.createTextNode(i+1);
-                ranking.appendChild(text);
                 let reg = crearRegistro(res[i]);
-                reg.appendChild(ranking);
                 frag.appendChild(reg);
             }
         })
@@ -87,5 +84,43 @@ btnOrden.addEventListener("click",()=>{
         })
         desc = true;
     }
+});
 
-})
+
+const btnOrdenAlf = document.getElementById("btn-orden-alf");
+btnOrdenAlf.addEventListener("click",()=>{
+    tbody.innerHTML = "";
+    if(desc == true){
+        traerRegistrosDB("/registros_alf_ASC")
+        .then((res)=>{
+            tbody.append(res);
+        })
+        desc = false;
+    }
+    else{
+        traerRegistrosDB("/registros_alf")
+        .then((res)=>{
+            tbody.append(res);
+        })
+        desc = true;
+    }
+});
+
+const btnOrdenPass = document.getElementById("btn-orden-pass");
+btnOrdenPass.addEventListener("click",()=>{
+    tbody.innerHTML = "";
+    if(desc == true){
+        traerRegistrosDB("/registros_pass_ASC")
+        .then((res)=>{
+            tbody.append(res);
+        })
+        desc = false;
+    }
+    else{
+        traerRegistrosDB("/registros_pass")
+        .then((res)=>{
+            tbody.append(res);
+        })
+        desc = true;
+    }
+});

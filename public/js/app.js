@@ -1,6 +1,6 @@
 const passBtn = document.getElementById("pass");
 const smashBtn = document.getElementById("smash");
-
+const navA = document.getElementById("nav-header");
 
 let champions;
 let personajeActual = 0;
@@ -61,9 +61,6 @@ function cargarInfo(){
             break;
     }
 
-
-
-
     if(window.innerWidth > 800){
         champImage.src = `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${nombrePersonaje}_0.jpg`;
     }
@@ -78,7 +75,6 @@ const formulario = document.getElementsByTagName("form")[0];
 formulario.addEventListener("submit",(e)=>e.preventDefault());
 
 
-
 smashBtn.addEventListener("click",(e)=>{
     e.preventDefault();
 
@@ -87,7 +83,7 @@ smashBtn.addEventListener("click",(e)=>{
     passBtn.disabled = true;
 
     let id = document.getElementById("id").value;
-    let name = document.getElementById("name");
+    let name = document.getElementById("name").value;
     let eleccion = "smash"
     
     let formData = {
@@ -143,6 +139,67 @@ passBtn.addEventListener("click",(e)=>{
         passBtn.disabled = false;
     })
 });
+
+
+
+const formName = document.getElementById("form-name");
+
+formName.addEventListener("click",(e)=>{
+    e.stopPropagation();
+})
+
+
+const inputSearch = document.getElementById("input-search");
+const championOptions = document.getElementById("champion-options");
+
+
+inputSearch.addEventListener("keydown",(e)=>{
+
+    
+
+    championOptions.innerHTML = "";
+
+    if(inputSearch.value.length < 1){
+        championOptions.innerHTML = "";
+        return
+    }
+
+    let searchedText = inputSearch.value.toLowerCase();
+    let regexPattern = "^" + searchedText + "\w*";
+    let regex = new RegExp(regexPattern,"i");
+    let coincidencias = new Array();
+    console.log(regex);
+
+    for(let i = 0; i < champions.length; i++){
+        if(champions[i].name.match(regex)){
+            let obj = {name: champions[i].name, posicion:i}
+            coincidencias.push(obj);
+            
+        }
+    }
+
+    console.log(coincidencias);
+
+    for(let i = 0; i < coincidencias.length; i++){
+        crearOpcion(coincidencias[i]);
+    } 
+});
+
+
+function crearOpcion(opcionChamp){
+    const opcion = document.createElement('li');
+    opcion.value = opcionChamp.posicion;
+    opcion.textContent = opcionChamp.name;
+    championOptions.appendChild(opcion);
+    console.log("Se creó ", opcion);
+    opcion.addEventListener("click",()=>{
+        personajeActual = opcion.value;
+        cargarInfo();
+        navA.classList.remove("showNav");
+        championOptions.innerHTML = "";
+        inputSearch.value = "";
+    })
+}
 
 
 

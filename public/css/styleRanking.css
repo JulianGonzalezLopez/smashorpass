@@ -33,7 +33,7 @@ table tr:nth-child(2n){
     align-items: center;
 }
 
-#btn-orden{
+.btn-orden{
     width: 1rem;
     height: auto;
     margin-left: 1rem

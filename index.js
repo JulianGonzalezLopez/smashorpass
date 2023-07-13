@@ -36,6 +36,33 @@ app.get("/registros",(req,res)=>{
     });
 })
 
+app.get("/registros_pass",(req,res)=>{
+    db.all("SELECT * FROM resultados ORDER BY pass DESC", (err, rows) => {
+        if (err) {
+          console.error(err.message);
+          return;
+        }
+        console.log(rows);
+        res.ok = 200;
+        res.send(rows);
+        res.end();
+    });
+})
+
+app.get("/registros_alf",(req,res)=>{
+    db.all("SELECT * FROM resultados ORDER BY name DESC", (err, rows) => {
+        if (err) {
+          console.error(err.message);
+          return;
+        }
+        console.log(rows);
+        res.ok = 200;
+        res.send(rows);
+        res.end();
+    });
+})
+
+
 app.get("/registros_ASC",(req,res)=>{
     db.all("SELECT * FROM resultados ORDER BY smash ASC", (err, rows) => {
         if (err) {
@@ -48,6 +75,34 @@ app.get("/registros_ASC",(req,res)=>{
         res.end();
     });
 });
+
+app.get("/registros_pass_ASC",(req,res)=>{
+    db.all("SELECT * FROM resultados ORDER BY pass ASC", (err, rows) => {
+        if (err) {
+          console.error(err.message);
+          return;
+        }
+        console.log(rows);
+        res.ok = 200;
+        res.send(rows);
+        res.end();
+    });
+});
+
+app.get("/registros_alf_ASC",(req,res)=>{
+    db.all("SELECT * FROM resultados ORDER BY name ASC", (err, rows) => {
+        if (err) {
+          console.error(err.message);
+          return;
+        }
+        console.log(rows);
+        res.ok = 200;
+        res.send(rows);
+        res.end();
+    });
+});
+
+
 
 
 app.post("/sop",(req,res)=>{

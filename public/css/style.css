@@ -12,7 +12,7 @@
 
 body{
     font-family: friz-quadrata-regular;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 h1{
@@ -48,6 +48,36 @@ nav{
     align-items:center ;
     z-index: 1;
 }
+
+
+#form-name{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#label-importante{
+    width:200px;
+}
+
+#label-importante *{
+    width: 100%;
+}
+
+#label-search{
+    position: relative;
+}
+
+#champion-options{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+
 
 main{
     margin-top:10vh;
