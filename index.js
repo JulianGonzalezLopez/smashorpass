@@ -15,14 +15,15 @@ app.use(express.json());
 //Defino donde estan los assets estaticos
 app.use(express.static(__dirname + '/public'));
 
+//Ruta a la pagina principal de la aplicacion
 app.get("/",(req,res)=>{
     res.render("sop")
 })
-
+//Ruta a /ranking
 app.get("/ranking",(req,res)=>{
     res.render("ranking");
 })
-
+//Devuelve la informacion guardada en la base de datos en orden descendiente dada SMASH
 app.get("/registros",(req,res)=>{
     db.all("SELECT * FROM resultados ORDER BY smash DESC", (err, rows) => {
         if (err) {
@@ -35,7 +36,7 @@ app.get("/registros",(req,res)=>{
         res.end();
     });
 })
-
+//Devuelve la informacion guardada en la base de datos en orden descendiente dada PASS
 app.get("/registros_pass",(req,res)=>{
     db.all("SELECT * FROM resultados ORDER BY pass DESC", (err, rows) => {
         if (err) {
@@ -48,7 +49,7 @@ app.get("/registros_pass",(req,res)=>{
         res.end();
     });
 })
-
+//Devuelve la informacion guardada en la base de datos en orden descendiente dado NAME
 app.get("/registros_alf",(req,res)=>{
     db.all("SELECT * FROM resultados ORDER BY name DESC", (err, rows) => {
         if (err) {
@@ -61,8 +62,7 @@ app.get("/registros_alf",(req,res)=>{
         res.end();
     });
 })
-
-
+//Devuelve la informacion guardada en la base de datos en orden ascendiente dada SMASH
 app.get("/registros_ASC",(req,res)=>{
     db.all("SELECT * FROM resultados ORDER BY smash ASC", (err, rows) => {
         if (err) {
@@ -75,7 +75,7 @@ app.get("/registros_ASC",(req,res)=>{
         res.end();
     });
 });
-
+//Devuelve la informacion guardada en la base de datos en orden ascendiente dado PASS
 app.get("/registros_pass_ASC",(req,res)=>{
     db.all("SELECT * FROM resultados ORDER BY pass ASC", (err, rows) => {
         if (err) {
@@ -88,7 +88,7 @@ app.get("/registros_pass_ASC",(req,res)=>{
         res.end();
     });
 });
-
+//Devuelve la informacion guardada en la base de datos en orden ascendiente dado NAME
 app.get("/registros_alf_ASC",(req,res)=>{
     db.all("SELECT * FROM resultados ORDER BY name ASC", (err, rows) => {
         if (err) {
@@ -101,10 +101,7 @@ app.get("/registros_alf_ASC",(req,res)=>{
         res.end();
     });
 });
-
-
-
-
+//Endpoint utilizado para enviar la información de la elección de la persona al servidor
 app.post("/sop",(req,res)=>{
 
     console.log(req.body);
@@ -168,10 +165,10 @@ app.post("/sop",(req,res)=>{
         }
     });
 
-
+    //Seteo y respondo
     res.ok = 200;
     res.send({"ok":"ok"});
     res.end();
 });
-
+//Puerto en el cual escucha la aplicacion
 app.listen(80);
