@@ -15,5 +15,4 @@ This is a joke proyect to learn more about SQL, NodeJS and related technologies
 Download this repo and run npm install in its direction
 
 ## Example
-[https://github.com/JulianGonzalezLopez/smashorpass/assets/94023125/c8d75628-710c-4671-882d-bdc5d3806472](https://gifs.com/gif/ejemplo-r2GO1k)https://gifs.com/gif/ejemplo-r2GO1k
-
+https://j.gifs.com/r2GO1k.gif
